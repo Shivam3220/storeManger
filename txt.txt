@@ -1,0 +1,882 @@
+[
+  {
+    "customerName": "Tara",
+    "cartData": [
+      {
+        "productName": "sarso oil",
+        "price": 160,
+        "quantity": 1
+      },
+      {
+        "productName": "kit bag",
+        "price": 50,
+        "quantity": 1
+      },
+      {
+        "productName": "vivel",
+        "price": 90,
+        "quantity": 1
+      },
+      {
+        "productName": "jelly",
+        "price": 30,
+        "quantity": 1
+      },
+      {
+        "productName": "parle-g",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "rice",
+        "price": 65,
+        "quantity": 1
+      },
+      {
+        "productName": "cherry liquid",
+        "price": 95,
+        "quantity": 1
+      },
+      {
+        "productName": "drawing copy",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "dhoop",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "jhot bathi",
+        "price": 10,
+        "quantity": 1
+      },
+      {
+        "productName": "surf excel",
+        "price": 230,
+        "quantity": 1
+      },
+      {
+        "productName": "ezze",
+        "price": 55,
+        "quantity": 1
+      },
+      {
+        "productName": "calender",
+        "price": 15,
+        "quantity": 1
+      },
+      {
+        "productName": "biscuit/bhujia",
+        "price": 114,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "customerName": "Kirtan",
+    "cartData": [
+      {
+        "productName": "tide",
+        "price": 120,
+        "quantity": 1
+      },
+      {
+        "productName": "pulpy",
+        "price": 80,
+        "quantity": 1
+      },
+      {
+        "productName": "led",
+        "price": 90,
+        "quantity": 1
+      },
+      {
+        "productName": "sanitizer",
+        "price": 450,
+        "quantity": 1
+      },
+      {
+        "productName": "pulpy",
+        "price": 120,
+        "quantity": 1
+      },
+      {
+        "productName": "hanger",
+        "price": 100,
+        "quantity": 1
+      },
+      {
+        "productName": "gas pipe",
+        "price": 100,
+        "quantity": 1
+      },
+      {
+        "productName": "magnet deo",
+        "price": 150,
+        "quantity": 1
+      },
+      {
+        "productName": "pulpy",
+        "price": 120,
+        "quantity": 1
+      },
+      {
+        "productName": "sanitizer",
+        "price": 450,
+        "quantity": 1
+      },
+      {
+        "productName": "chocolate",
+        "price": 80,
+        "quantity": 1
+      },
+      {
+        "productName": "mouth spray",
+        "price": 80,
+        "quantity": 1
+      },
+      {
+        "productName": "yadley deo",
+        "price": 200,
+        "quantity": 1
+      },
+      {
+        "productName": "pulpy",
+        "price": 120,
+        "quantity": 1
+      },
+      {
+        "productName": "lizol",
+        "price": 700,
+        "quantity": 1
+      },
+      {
+        "productName": "pulpy",
+        "price": 200,
+        "quantity": 1
+      },
+      {
+        "productName": "park avenue",
+        "price": 170,
+        "quantity": 1
+      },
+      {
+        "productName": "lip balm",
+        "price": 35,
+        "quantity": 1
+      },
+      {
+        "productName": "fanta",
+        "price": 50,
+        "quantity": 1
+      },
+      {
+        "productName": "juice",
+        "price": 230,
+        "quantity": 1
+      },
+      {
+        "productName": "chips",
+        "price": 60,
+        "quantity": 1
+      },
+      {
+        "productName": "tata salt",
+        "price": 28,
+        "quantity": 1
+      },
+      {
+        "productName": "sanitizer",
+        "price": 450,
+        "quantity": 1
+      },
+      {
+        "productName": "pulpy",
+        "price": 100,
+        "quantity": 1
+      },
+      {
+        "productName": "colgate total",
+        "price": 150,
+        "quantity": 1
+      },
+      {
+        "productName": "pulpy",
+        "price": 100,
+        "quantity": 1
+      },
+      {
+        "productName": "lux inferno",
+        "price": 1400,
+        "quantity": 1
+      },
+      {
+        "productName": "elfy",
+        "price": 30,
+        "quantity": 1
+      },
+      {
+        "productName": "juice",
+        "price": 110,
+        "quantity": 1
+      },
+      {
+        "productName": "hand wash",
+        "price": 190,
+        "quantity": 1
+      },
+      {
+        "productName": "scoth brite",
+        "price": 25,
+        "quantity": 1
+      },
+      {
+        "productName": "sanitizer",
+        "price": 450,
+        "quantity": 1
+      },
+      {
+        "productName": "dettol liquid",
+        "price": 205,
+        "quantity": 1
+      },
+      {
+        "productName": "gajak",
+        "price": 80,
+        "quantity": 1
+      },
+      {
+        "productName": "lays",
+        "price": 40,
+        "quantity": 1
+      },
+      {
+        "productName": "mouse pad",
+        "price": 80,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "customerName": "Amit",
+    "cartData": [
+      {
+        "productName": "sampoo",
+        "price": 14,
+        "quantity": 1
+      },
+      {
+        "productName": "kissan",
+        "price": 50,
+        "quantity": 1
+      },
+      {
+        "productName": "amul butter -----pending",
+        "price": 4,
+        "quantity": 1
+      },
+      {
+        "productName": "soup",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "almond",
+        "price": 35,
+        "quantity": 1
+      },
+      {
+        "productName": "namkene",
+        "price": 90,
+        "quantity": 1
+      },
+      {
+        "productName": "gajak",
+        "price": 80,
+        "quantity": 1
+      },
+      {
+        "productName": "amul",
+        "price": 54,
+        "quantity": 1
+      },
+      {
+        "productName": "blade",
+        "price": 50,
+        "quantity": 1
+      },
+      {
+        "productName": "fruit cream",
+        "price": 95,
+        "quantity": 1
+      },
+      {
+        "productName": "jordan lotion",
+        "price": 40,
+        "quantity": 1
+      },
+      {
+        "productName": "panty",
+        "price": 90,
+        "quantity": 1
+      },
+      {
+        "productName": "phynl",
+        "price": 90,
+        "quantity": 1
+      },
+      {
+        "productName": "chocolate",
+        "price": 100,
+        "quantity": 1
+      },
+      {
+        "productName": "butter",
+        "price": 54,
+        "quantity": 1
+      },
+      {
+        "productName": "calender",
+        "price": 25,
+        "quantity": 1
+      },
+      {
+        "productName": "rumal",
+        "price": 30,
+        "quantity": 1
+      },
+      {
+        "productName": "bhujia",
+        "price": 54,
+        "quantity": 1
+      },
+      {
+        "productName": "inner ",
+        "price": 200,
+        "quantity": 1
+      },
+      {
+        "productName": "wishper",
+        "price": 45,
+        "quantity": 1
+      },
+      {
+        "productName": "cash",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "biscuit",
+        "price": 60,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "customerName": "Manish 1536",
+    "cartData": [
+      {
+        "productName": "chawanprash",
+        "price": 350,
+        "quantity": 1
+      },
+      {
+        "productName": "parle",
+        "price": 15,
+        "quantity": 1
+      },
+      {
+        "productName": "fenna",
+        "price": 65,
+        "quantity": 1
+      },
+      {
+        "productName": "color",
+        "price": 10,
+        "quantity": 1
+      },
+      {
+        "productName": "good day",
+        "price": 10,
+        "quantity": 1
+      },
+      {
+        "productName": "craks",
+        "price": 15,
+        "quantity": 1
+      },
+      {
+        "productName": "pencil",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "rubber",
+        "price": 5,
+        "quantity": 1
+      },
+      {
+        "productName": "copy",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "munch",
+        "price": 10,
+        "quantity": 1
+      },
+      {
+        "productName": "sarso oil ",
+        "price": 160,
+        "quantity": 1
+      },
+      {
+        "productName": "ghari",
+        "price": 95,
+        "quantity": 1
+      },
+      {
+        "productName": "sunsilk",
+        "price": 55,
+        "quantity": 1
+      },
+      {
+        "productName": "bournvita ",
+        "price": 215,
+        "quantity": 1
+      },
+      {
+        "productName": "calender",
+        "price": 15,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "customerName": "2716 flat",
+    "cartData": [
+      {
+        "productName": "pending bill",
+        "price": 1880,
+        "quantity": 1
+      },
+      {
+        "productName": "deposit",
+        "price": -1500,
+        "quantity": 1
+      },
+      {
+        "productName": "til oil",
+        "price": 170,
+        "quantity": 1
+      },
+      {
+        "productName": "butter ",
+        "price": 265,
+        "quantity": 1
+      },
+      {
+        "productName": "underwear",
+        "price": 120,
+        "quantity": 1
+      },
+      {
+        "productName": "baniyan",
+        "price": 115,
+        "quantity": 1
+      },
+      {
+        "productName": "underwear",
+        "price": 85,
+        "quantity": 1
+      },
+      {
+        "productName": "baniyan",
+        "price": 65,
+        "quantity": 1
+      },
+      {
+        "productName": "mahakosh",
+        "price": 140,
+        "quantity": 1
+      },
+      {
+        "productName": "hot oil",
+        "price": 50,
+        "quantity": 1
+      },
+      {
+        "productName": "no.1",
+        "price": 110,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "customerName": "Akash gupta",
+    "cartData": [
+      {
+        "productName": "bill pending",
+        "price": 1923,
+        "quantity": 1
+      },
+      {
+        "productName": "deposit",
+        "price": -1000,
+        "quantity": 1
+      },
+      {
+        "productName": "ponds cream",
+        "price": 140,
+        "quantity": 1
+      },
+      {
+        "productName": "fiama soap",
+        "price": 330,
+        "quantity": 1
+      },
+      {
+        "productName": "oats",
+        "price": 200,
+        "quantity": 1
+      },
+      {
+        "productName": "surf ",
+        "price": 130,
+        "quantity": 1
+      },
+      {
+        "productName": "ponds cream",
+        "price": 140,
+        "quantity": 1
+      },
+      {
+        "productName": "food wrap paper",
+        "price": 70,
+        "quantity": 1
+      },
+      {
+        "productName": "lock",
+        "price": 250,
+        "quantity": 5
+      },
+      {
+        "productName": "kesar tea",
+        "price": 130,
+        "quantity": 1
+      },
+      {
+        "productName": "colgate",
+        "price": 270,
+        "quantity": 1
+      },
+      {
+        "productName": "bru coffee",
+        "price": 170,
+        "quantity": 1
+      },
+      {
+        "productName": "vi jhon shaving cream",
+        "price": 45,
+        "quantity": 1
+      },
+      {
+        "productName": "tooth brush",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "deo",
+        "price": 380,
+        "quantity": 1
+      },
+      {
+        "productName": "calender",
+        "price": 25,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "customerName": "Lovely",
+    "cartData": [
+      {
+        "productName": "bill",
+        "price": 1625,
+        "quantity": 1
+      },
+      {
+        "productName": "deposit",
+        "price": -1500,
+        "quantity": 1
+      },
+      {
+        "productName": "body lotion ",
+        "price": 250,
+        "quantity": 1
+      },
+      {
+        "productName": "pampers",
+        "price": 100,
+        "quantity": 1
+      },
+      {
+        "productName": "safety pin",
+        "price": 10,
+        "quantity": 1
+      },
+      {
+        "productName": "goods 13/12",
+        "price": 1418,
+        "quantity": 1
+      },
+      {
+        "productName": "elfy",
+        "price": 30,
+        "quantity": 1
+      },
+      {
+        "productName": "shots",
+        "price": 10,
+        "quantity": 1
+      },
+      {
+        "productName": "kids wollen inner wear",
+        "price": 240,
+        "quantity": 1
+      },
+      {
+        "productName": "goods ",
+        "price": 2423,
+        "quantity": 1
+      },
+      {
+        "productName": "deposit",
+        "price": -2000,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "customerName": "Ashok tanent",
+    "cartData": [
+      {
+        "productName": "bill",
+        "price": 3324,
+        "quantity": 1
+      },
+      {
+        "productName": "deposit",
+        "price": -1000,
+        "quantity": 1
+      },
+      {
+        "productName": "chips",
+        "price": 40,
+        "quantity": 1
+      },
+      {
+        "productName": "cake",
+        "price": 10,
+        "quantity": 1
+      },
+      {
+        "productName": "dairy milk",
+        "price": 10,
+        "quantity": 1
+      },
+      {
+        "productName": "dairy milk",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "thumsup",
+        "price": 95,
+        "quantity": 1
+      },
+      {
+        "productName": "fanta",
+        "price": 50,
+        "quantity": 1
+      },
+      {
+        "productName": "chocolate",
+        "price": 10,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "customerName": "Satyam",
+    "cartData": [
+      {
+        "productName": "vaslene",
+        "price": 60,
+        "quantity": 1
+      },
+      {
+        "productName": "fenna",
+        "price": 65,
+        "quantity": 1
+      },
+      {
+        "productName": "ghari",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "bubly silk",
+        "price": 80,
+        "quantity": 1
+      },
+      {
+        "productName": "refined",
+        "price": 140,
+        "quantity": 1
+      },
+      {
+        "productName": "tata salt",
+        "price": 28,
+        "quantity": 1
+      },
+      {
+        "productName": "dairy milk",
+        "price": 40,
+        "quantity": 1
+      },
+      {
+        "productName": "kanga",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "pocket deo",
+        "price": 60,
+        "quantity": 1
+      },
+      {
+        "productName": "chips",
+        "price": 50,
+        "quantity": 1
+      },
+      {
+        "productName": "refined",
+        "price": 140,
+        "quantity": 1
+      },
+      {
+        "productName": "bulb",
+        "price": 16,
+        "quantity": 1
+      },
+      {
+        "productName": "refined",
+        "price": 140,
+        "quantity": 1
+      },
+      {
+        "productName": "coffee toffee",
+        "price": 80,
+        "quantity": 1
+      },
+      {
+        "productName": "refined",
+        "price": 140,
+        "quantity": 1
+      },
+      {
+        "productName": "mirch",
+        "price": 70,
+        "quantity": 1
+      },
+      {
+        "productName": "chocolate",
+        "price": 40,
+        "quantity": 1
+      },
+      {
+        "productName": "vaslene",
+        "price": 60,
+        "quantity": 1
+      },
+      {
+        "productName": "nisha soap",
+        "price": 30,
+        "quantity": 1
+      },
+      {
+        "productName": "ghari soap",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "juna ",
+        "price": 40,
+        "quantity": 1
+      },
+      {
+        "productName": "duster",
+        "price": 20,
+        "quantity": 1
+      },
+      {
+        "productName": "mazza",
+        "price": 40,
+        "quantity": 1
+      },
+      {
+        "productName": "chocolate",
+        "price": 80,
+        "quantity": 1
+      },
+      {
+        "productName": "mahakosh",
+        "price": 140,
+        "quantity": 1
+      },
+      {
+        "productName": "lifebouy soap",
+        "price": 35,
+        "quantity": 1
+      },
+      {
+        "productName": "calender",
+        "price": 15,
+        "quantity": 1
+      },
+      {
+        "productName": "cash",
+        "price": 50,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "customerName": "Vishal gupta 1535",
+    "cartData": [
+      {
+        "productName": "cobra",
+        "price": 40,
+        "quantity": 1
+      },
+      {
+        "productName": "ladies trouser",
+        "price": 200,
+        "quantity": 1
+      },
+      {
+        "productName": "gents trouser",
+        "price": 210,
+        "quantity": 1
+      },
+      {
+        "productName": "fruit and nut",
+        "price": 45,
+        "quantity": 1
+      }
+    ]
+  }
+]
