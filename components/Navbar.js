@@ -43,7 +43,7 @@ const navbar = () => {
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle text-black fw-semibold"
-                  href="#"
+                  href=""
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
