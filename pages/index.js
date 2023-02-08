@@ -79,7 +79,7 @@ const Index = () => {
       "cartData": cart[index].cartData,
       "billDate": new Date().toDateString()
     }
-    const response = await fetch("/api/recordBillCheckout", {
+    const response = await fetch("/api/recordBill", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -101,7 +101,7 @@ const Index = () => {
       "cartData": [],
       "billDate": new Date().toDateString()
     }
-    const response = await fetch("/api/recordBillCheckout", {
+    const response = await fetch("/api/recordBill", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
