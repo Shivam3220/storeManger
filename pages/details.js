@@ -63,7 +63,7 @@ const details = () => {
       }
       // console.log("details.js", dateSearch);
 
-      const data = await fetch("http://localhost:3000/api/getBill", {
+      const data = await fetch("http://localhost:3000/api/recordBill", {
         method: "GET",
         headers: {
           query: `{"${parameter}":"${userParameter}"}`,

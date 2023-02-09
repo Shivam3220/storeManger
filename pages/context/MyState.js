@@ -1,11 +1,7 @@
 import MyContext from "./MyContext";
 import { useEffect, useState } from "react";
 
-
-
-
 const myState = (props) => { 
-  
   // total data of active customer
     const [cart, setCart] = useState([]);
     const [bNumber,setBnumber]=useState(0)
@@ -14,23 +10,19 @@ const myState = (props) => {
   useEffect(() => {
       if(localStorage.getItem("cart")!==null){
         setCart(JSON.parse(localStorage.getItem("cart")))
-        // console.log("mystate useeffect",localStorage.getItem("cart"))
       }
   }, [])
-
 
   async function getNo(){
     const recordNo=await fetch("/api/recordBill", {
       method: "GET",
     });
     const number=await recordNo.json()
-     setBnumber(number)
-    //  console.log("run getNo")
+    setBnumber(number)
   }
 
  useEffect(() => {
   getNo()
-  // console.log("getno code useeffect is running")
   }, [])
    
     

@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap-icons/font/bootstrap-icons.css"
+import "bootstrap-icons/font/bootstrap-icons.css";
 import Navbar from "../components/Navbar";
 import MyState from "./context/MyState";
 import { useEffect } from "react";

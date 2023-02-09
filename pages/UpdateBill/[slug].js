@@ -27,7 +27,7 @@ const ComponentToPrintWrapper = ({ customerAtIndex }) => {
             "cartData": preBills[index].cartData,
             "billDate":  preBills[index].billDate
           }
-          const response = await fetch("/api/recordBillCheckout", {
+          const response = await fetch("/api/recordBill", {
             method: "PUT",
             headers: {
               "Content-Type": "application/json"
@@ -69,7 +69,7 @@ const UpdateBill = () => {
 
   const fetchBillData = async () => {
     // console.log("fetch is running",slug)
-    const data = await fetch("http://localhost:3000/api/getBill", {
+    const data = await fetch("http://localhost:3000/api/recordBill", {
       method: "GET",
       headers: {
         query: `{"_id":"${slug}"}`,
