@@ -8,7 +8,12 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
   // console.log(index,preBills)
   return (
     <div className="print-source" ref={ref}>
-      <PreBillComponent preBills={preBills} index={index} setbills={setbills} />
+      <PreBillComponent
+        preBills={preBills}
+        index={index}
+        setbills={setbills}
+        editing={false}
+      />
     </div>
   );
 });
@@ -46,19 +51,17 @@ const details = () => {
   const [recordedBill, setRecordedBill] = useState([]);
   const [inputFieldType, setInputFieldType] = useState("date");
 
-  const UserInput = useRef(); 
-  const InputParameter = useRef(); 
+  const UserInput = useRef();
+  const InputParameter = useRef();
 
   const onSearch = async (e) => {
     e.preventDefault();
     if (UserInput.current.value != "") {
-      let parameter= InputParameter.current.value
-      let userParameter=UserInput.current.value
-      if(InputParameter.current.value=="billNo"){
-        userParameter=parseInt(UserInput.current.value)
-      }
-      else if(InputParameter.current.value=="billDate"){
-
+      let parameter = InputParameter.current.value;
+      let userParameter = UserInput.current.value;
+      if (InputParameter.current.value == "billNo") {
+        userParameter = parseInt(UserInput.current.value);
+      } else if (InputParameter.current.value == "billDate") {
         userParameter = new Date(UserInput.current.value).toDateString();
       }
       // console.log("details.js", dateSearch);
@@ -78,31 +81,33 @@ const details = () => {
     }
   };
 
-
-  const onchangeParaMeters=(e)=>{
-    if(e.target.value=="billDate"){
-      setInputFieldType("date")
+  const onchangeParaMeters = (e) => {
+    if (e.target.value == "billDate") {
+      setInputFieldType("date");
+    } else if (e.target.value == "billNo") {
+      setInputFieldType("number");
+    } else if (e.target.value == "buyer") {
+      setInputFieldType("text");
     }
-    else if(e.target.value=="billNo"){
-      setInputFieldType("number")
-    }
-    else if(e.target.value=="buyer"){
-      setInputFieldType("text")
-    }
-    // console.log(e.target.value) 
-  }
+    // console.log(e.target.value)
+  };
 
   return (
     <>
       <div className="container my-4">
         <form className="mb-3 row">
-
-          <select className="w-25 rounded-2 fw-bold" aria-label="Default select example" onChange={onchangeParaMeters} ref={InputParameter}>
-            <option value="billDate" defaultValue>Search By Date</option>
+          <select
+            className="w-25 rounded-2 fw-bold"
+            aria-label="Default select example"
+            onChange={onchangeParaMeters}
+            ref={InputParameter}
+          >
+            <option value="billDate" defaultValue>
+              Search By Date
+            </option>
             <option value="billNo">Search By Bill Number</option>
             <option value="buyer">Search By Name</option>
           </select>
-          
 
           <div className="col-sm-4">
             <input
