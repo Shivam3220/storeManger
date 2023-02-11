@@ -6,9 +6,11 @@ const handler = async (req, res) => {
     if(req.headers.query!=undefined){
       try{
         const d = await JSON.parse(req.headers.query)
-        // console.log(req.headers)
+        if(d.buyer!=undefined){
+          const buyerName=new RegExp(d.buyer,"i")
+          d.buyer=buyerName
+        }
         const bills= await Records.find(d)
-        // console.log(bills)
         return res.status(200).send(bills);
       }
       catch{
