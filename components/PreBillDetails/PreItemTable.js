@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 
 const ItemTable = (props) => {
-  const { preBills, customerindex ,setbills} = props;
+  const { preBills, customerindex, setbills, editing } = props;
   let totalAmout = 0;
   let serialNumber = 0;
-  const [delBtn, setDelBtn] = useState(-1)
+  const [delBtn, setDelBtn] = useState(-1);
 
-  const mouseEnter=(Dindex)=>{
-      setDelBtn(Dindex)
-  }
-  const mouseLeave=()=>{
-    setDelBtn(-1)
-  }
+  const mouseEnter = (Dindex) => {
+    if (editing) {
+      setDelBtn(Dindex);
+    }
+  };
+  const mouseLeave = () => {
+    if (editing) {
+      setDelBtn(-1);
+    }
+  };
 
-  const delClick=(index)=>{
-    preBills[customerindex].cartData.splice(index,1)
-    setbills([...preBills])
+  const delClick = (index) => {
+    preBills[customerindex].cartData.splice(index, 1);
+    setbills([...preBills]);
     // console.log(index)
-  }
+  };
 
   const onchangeTableDataProduct = (e, index) => {
     preBills[customerindex].cartData[index].productName = e.target.value;
@@ -50,8 +54,20 @@ const ItemTable = (props) => {
               serialNumber++;
               return (
                 <tr key={Dindex}>
-                  <th scope="row" className="px-2 col-md-1" onMouseEnter={()=>mouseEnter(Dindex)} onMouseLeave={mouseLeave}>
-                    {serialNumber} <span role="button" hidden={delBtn === Dindex? false:true} onClick={()=>delClick(Dindex)}><i className="bi bi-trash "></i></span>
+                  <th
+                    scope="row"
+                    className="px-2 col-md-1"
+                    onMouseEnter={() => mouseEnter(Dindex)}
+                    onMouseLeave={mouseLeave}
+                  >
+                    {serialNumber}{" "}
+                    <span
+                      role="button"
+                      hidden={delBtn === Dindex ? false : true}
+                      onClick={() => delClick(Dindex)}
+                    >
+                      <i className="bi bi-trash "></i>
+                    </span>
                   </th>
 
                   <td className="col-md-3">

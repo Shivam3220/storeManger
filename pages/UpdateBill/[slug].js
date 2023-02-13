@@ -9,43 +9,50 @@ const ComponentToPrint = React.forwardRef((props, ref) => {
   //   console.log(index,preBills)
   return (
     <div className="print-source" ref={ref}>
-      <PreBillComponent preBills={preBills} index={index} setbills={setbills} />
+      <PreBillComponent
+        preBills={preBills}
+        index={index}
+        setbills={setbills}
+        editing={true}
+      />
     </div>
   );
 });
 
 const ComponentToPrintWrapper = ({ customerAtIndex }) => {
-    const router = useRouter();
+  const router = useRouter();
   const componentRef = useRef();
   //   console.log("componenetTo print wrapper", customerAtIndex.index);
-    const UpdateClick=async(customerAtIndex)=>{
-        const {preBills,index}=customerAtIndex
-        // console.log(preBills)
-        const data = {
-            "buyer": preBills[index].buyer,
-            "billNo": preBills[index].billNo,
-            "cartData": preBills[index].cartData,
-            "billDate":  preBills[index].billDate
-          }
-          const response = await fetch("/api/recordBill", {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data),
-          });
-          const resRecive = await response.json()
-          if (resRecive.recorded) {
-            router.push("/") 
-          }
+  const UpdateClick = async (customerAtIndex) => {
+    const { preBills, index } = customerAtIndex;
+    // console.log(preBills)
+    const data = {
+      buyer: preBills[index].buyer,
+      billNo: preBills[index].billNo,
+      cartData: preBills[index].cartData,
+      billDate: preBills[index].billDate,
+    };
+    const response = await fetch("/api/recordBill", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const resRecive = await response.json();
+    if (resRecive.recorded) {
+      router.push("/");
     }
-
+  };
 
   return (
     <div>
       <ComponentToPrint ref={componentRef} customerAtIndex={customerAtIndex} />
       <div className="d-flex justify-content-end">
-        <button className="btn px-3 m-2 btn-info text-black fw-bold border border-dark" onClick={()=>UpdateClick(customerAtIndex)}>
+        <button
+          className="btn px-3 m-2 btn-info text-black fw-bold border border-dark"
+          onClick={() => UpdateClick(customerAtIndex)}
+        >
           Update
         </button>
         <ReactToPrint
@@ -93,22 +100,22 @@ const UpdateBill = () => {
       {preBills.length > 0 &&
         preBills.map((e, cIndex) => {
           return (
-              <div key={cIndex}>
-                <div className=" w-50 m-auto my-4">
-                  <ComponentToPrintWrapper
-                    customerAtIndex={{
-                      index: cIndex,
-                      preBills: preBills,
-                      setbills: setPreBills,
-                    }}
-                  />
-                </div>
-                <PreItemForm
-                  customerIndex={cIndex}
-                  preBills={preBills}
-                  setbills={setPreBills}
+            <div key={cIndex}>
+              <div className=" w-50 m-auto my-4">
+                <ComponentToPrintWrapper
+                  customerAtIndex={{
+                    index: cIndex,
+                    preBills: preBills,
+                    setbills: setPreBills,
+                  }}
                 />
               </div>
+              <PreItemForm
+                customerIndex={cIndex}
+                preBills={preBills}
+                setbills={setPreBills}
+              />
+            </div>
           );
         })}
     </>
