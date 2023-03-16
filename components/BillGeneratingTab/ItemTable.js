@@ -18,7 +18,6 @@ const ItemTable = (props) => {
   const delClick=(index)=>{
     cart[props.index].cartData.splice(index,1)
     setCart([...cart])
-    console.log(index)
   }
 
   const onchangeTableDataProduct = (e, index) => {
@@ -41,6 +40,7 @@ const ItemTable = (props) => {
           <tr>
             <th>S.No.</th>
             <th>Product</th>
+            <th>Price</th>
             <th>Quantity</th>
             <th className="px-5"> Amout</th>
           </tr>
@@ -48,7 +48,7 @@ const ItemTable = (props) => {
         <tbody className="table-group-divider fs-6">
           {cart.length > 0 ? (
             cart[props.index].cartData.map((e, Dindex) => {
-              totalAmout += e.price;
+              totalAmout += (e.price*e.quantity);
               serialNumber++;
               return (
                 <tr key={Dindex}>
@@ -70,6 +70,16 @@ const ItemTable = (props) => {
                     <input
                       type="number"
                       className="w-100 border-0"
+                      value={e.price}
+                      onChange={(element) =>
+                        onchangeTableDataPrice(element, Dindex)
+                      }
+                    />
+                  </td>
+                  <td className="col-md-1">
+                    <input
+                      type="number"
+                      className="w-100 border-0"
                       value={e.quantity}
                       onChange={(element) =>
                         onchangeTableDataQuantity(element, Dindex)
@@ -81,10 +91,8 @@ const ItemTable = (props) => {
                       type="number"
                       className="w-50 text-end border-0"
                       style={{ marginLeft: "1rem" }}
-                      value={e.price}
-                      onChange={(element) =>
-                        onchangeTableDataPrice(element, Dindex)
-                      }
+                      readOnly
+                      value={e.price*e.quantity}
                     />
                   </td>
                 </tr>
@@ -97,7 +105,7 @@ const ItemTable = (props) => {
           )}
           <tr>
             <th scope="row"></th>
-            <td colSpan="2" className="fw-bold text-end">
+            <td colSpan="3" className="fw-bold text-end">
               Grand Total
             </td>
             <td className="fw-bold">

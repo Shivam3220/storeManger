@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const stockSchema = new Schema({
-  item: {
+  product: {
     type: String,
     required: true,
     unique: true,
@@ -11,13 +11,17 @@ const stockSchema = new Schema({
     type: Number,
     required: true,
   },
-  sellingPrice: {
+  price: {
     type: Number,
     require: true,
   },
   available: {
     type: Number,
     require: true,
+  },
+  caseSize: {
+    type: Number,
+    default:1
   },
 });
 
