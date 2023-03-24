@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+const MONGODB_URI="mongodb://localhost:27017/grosStore"
 
 const connectDB = handler => async (req, res) => {
     if (mongoose.connections[0].readyState) {
@@ -7,7 +8,7 @@ const connectDB = handler => async (req, res) => {
     }
     
     // Use new db connection
-    await mongoose.connect(process.env.MONGODB_URI, {
+    await mongoose.connect(MONGODB_URI, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
       autoIndex: true

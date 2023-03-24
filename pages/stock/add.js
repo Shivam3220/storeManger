@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 
 const Add = () => {
@@ -8,6 +8,10 @@ const Add = () => {
   const mrp = useRef("")
   const available = useRef("")
   const caseSize = useRef(1)
+  const dropdown = useRef();
+
+  const [searchProduct, setSearchProduct] = useState([]);
+  
 
   const onAddProduct=async(e)=>{
     if(productName.current.value && price.current.value && mrp.current.value && available.current.value !=""){
@@ -27,13 +31,44 @@ const Add = () => {
         body: JSON.stringify(productData)
       })
       const res= await response.json()
-      if(res.addedStat==true){
+      if(res.stat==true){
         productName.current.value= ""
         price.current.value= ""
         mrp.current.value = ""
         available.current.value =""
+        caseSize.current.value =""
+        productName.current.focus()
       }
       
+    }
+  }
+
+
+  const toggleOn = () => {
+    const checkDropState = productName.current.className;
+    if (checkDropState.search("show") < 0) {
+      productName.current.click();
+    }
+  };
+
+
+  const onChangeProductInput = async () => {
+    if(productName.current.value!=""){
+
+      const product = productName.current.value;
+      const response = await fetch("/api/product", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          query: `{"product":"${product}"}`,
+        },
+      });
+      const res = await response.json();
+      if(res.stat){
+        setSearchProduct(res.products);
+      }
+    }else{
+      setSearchProduct([]);
     }
   }
 
@@ -42,7 +77,7 @@ const Add = () => {
       <h4 className="text-center">Add Product</h4>
       <form>
         <div className="my-4">
-          <div className="mb-3 row">
+          <div className="mb-3 row dropdown-center flex-fill col dropdown">
             <label
               htmlFor="ProductName"
               className="col-sm-2 col-form-label text-center"
@@ -56,8 +91,32 @@ const Add = () => {
                 id="ProductName"
                 placeholder="Product Name"
                 ref={productName}
+                onChange={onChangeProductInput}
+                onInput={toggleOn}
                 required
               />
+              <table className="table my-1 border table-hover" hidden={searchProduct.length>0?false:true}>
+              <thead>
+                <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>M.R.P.</th>
+                <th>Available</th>
+                <th>Case Size</th>
+                </tr>
+              </thead>
+              <tbody ref={dropdown}>
+                {searchProduct.map((e,index)=>{
+                  return (<tr key={index}>
+                    <td>{e.product}</td> 
+                    <td>{e.price}</td> 
+                    <td>{e.mrp}</td> 
+                    <td>{e.available}</td> 
+                    <td>{e.caseSize}</td> 
+                     </tr>)
+                })}
+                </tbody>
+               </table>
             </div>
           </div>
           <div className="mb-3 row">
@@ -101,6 +160,7 @@ const Add = () => {
                 id="caseSize"
                 placeholder=" Case Size"
                 ref={caseSize}
+                required
               />
             </div>
           </div>

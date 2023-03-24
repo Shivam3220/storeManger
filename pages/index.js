@@ -50,7 +50,7 @@ const Index = () => {
         "buyer": customer_name_capitalize,
         "billNo": bNumber,
         "cartData": [],
-        "billDate": new Date().toDateString()
+        "billDate": new Date().toDateString(),
       }
       const response = await fetch("/api/recordBill", {
         method: "POST",
@@ -64,13 +64,24 @@ const Index = () => {
       if (resRecive.recorded) {
         setCart([
           ...cart,
-          { customerName: customer_name_capitalize, cartData: [], billNumber: bNumber },
+          { customerName: customer_name_capitalize, cartData: [], billNumber: bNumber},
         ]);
         customer.current.value = "";
         getNo()
       }
     }
   };
+
+  // updating the stock quantity after checkout
+  const updateStock=async(cart)=>{
+    const response = await fetch("/api/stockUpdate", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(cart),
+    });
+  }
 
   const checkout = async (index) => {
     const data = {
@@ -88,6 +99,7 @@ const Index = () => {
     });
     const resRecive = await response.json()
     if (resRecive.recorded) {
+      updateStock(cart[index].cartData)
       cart.splice(index, 1);
       localStorage.setItem("cart", JSON.stringify(cart));
       setCart([...cart]);
@@ -161,7 +173,7 @@ const Index = () => {
                     aria-expanded="false"
                     aria-controls="collapseThree"
                   >
-                    {e.customerName}
+                    #{cIndex+1} {e.customerName}
                   </button>
                 </h2>
                 <div

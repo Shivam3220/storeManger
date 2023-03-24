@@ -10,6 +10,10 @@ const handler = async (req, res) => {
           const buyerName=new RegExp(d.buyer,"i")
           d.buyer=buyerName
         }
+        if(d.lastRecord!=undefined){
+          const bills= await Records.find().limit(d.lastRecord).sort({$natural:-1}) 
+        return res.status(200).send(bills)
+        }
         const bills= await Records.find(d)
         return res.status(200).send(bills);
       }

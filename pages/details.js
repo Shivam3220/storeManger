@@ -72,7 +72,7 @@ const details = () => {
           query: `{"${parameter}":"${userParameter}"}`,
           Accept: "application/json",
           "Content-Type": "application/json",
-        },
+        }
       });
       const d = await data.json();
       // console.log("details.js", d);
@@ -88,7 +88,9 @@ const details = () => {
       setInputFieldType("number");
     } else if (e.target.value == "buyer") {
       setInputFieldType("text");
-    }
+    }else if (e.target.value == "lastRecord") {
+      setInputFieldType("number");
+    } 
     // console.log(e.target.value)
   };
 
@@ -107,6 +109,7 @@ const details = () => {
             </option>
             <option value="billNo">Search By Bill Number</option>
             <option value="buyer">Search By Name</option>
+            <option value="lastRecord">Search Last Number of Bills</option>
           </select>
 
           <div className="col-sm-4">
@@ -147,7 +150,7 @@ const details = () => {
                     aria-expanded="false"
                     aria-controls="collapseThree"
                   >
-                    {e.buyer}
+                    #{cIndex+1} {e.buyer}
                   </button>
                 </h2>
                 <div

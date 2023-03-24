@@ -22,9 +22,16 @@ const ItemForm = (props) => {
       },
     });
     const res = await response.json();
-    setNavigate(0)
-    setSearchProduct(res);
+    if(res.stat){
+      setNavigate(0)
+      setSearchProduct(res.products);
+    }
   };
+
+  const call=()=>{
+    console.log("hi")
+    return 4
+  }
 
   const handleAddProduct = (index) => {
     if (productName.current.value != "" && price.current.value != "") {
