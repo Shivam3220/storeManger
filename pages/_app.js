@@ -1,7 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Navbar from "../components/Navbar";
-import MyState from "./context/MyState";
 import { useEffect } from "react";
 import Head from "next/head";
 
@@ -17,10 +16,8 @@ function MyApp({ Component, pageProps }) {
         <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <div className="pb-4">
-        <MyState>
           <Navbar />
           <Component {...pageProps} />
-        </MyState>
       </div>
     </>
   );

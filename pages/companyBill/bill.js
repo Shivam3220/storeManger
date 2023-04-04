@@ -1,40 +1,30 @@
-import React, { useEffect, useRef, useState } from "react";
-import ItemForm from "../components/BillGeneratingTab/ItemForm";
-import PrintComp from "../components/printComponent"
+import React, { useState,useEffect, useRef } from "react";
+import ItemForm from "../../components/BillGeneratingTab/ItemForm";
+import ComBillPrintCom from "./CompanyPrintComponent";
 
-const Index = () => {
-  // total data of active customer
-  const [activeCustomerCart, setActiveCustomerCart] = useState([]);
 
-  // getting the count of bill recorded to set the bill number in increment order 
-  const [billNumber,setBillNumber]=useState(0)
-
-  // useRefs 
+const bill = () => {
   const customer = useRef();
 
-  // getting the next bill number form database
-  async function getBillNo(){
-    const recordNo=await fetch("/api/recordBill", {
+  const [companyCart, setCompanyCart] = useState([])
+  const [cBNumber, setCBNumber] = useState(0)
+
+  async function getNo(){
+    const recordNo=await fetch("/api/companyBill", {
       method: "GET",
     });
     const number=await recordNo.json()
-    setBillNumber(number)
+    setCBNumber(number)
   }
 
-  // getting the cart from local storage if present 
+
   useEffect(() => {
-    getBillNo()
-    if(localStorage.getItem("activeCustomercart")!==null){
-      setActiveCustomerCart(JSON.parse(localStorage.getItem("activeCustomercart")))
+    getNo()
+    if(localStorage.getItem("companyCart")!==null){
+      setCompanyCart(JSON.parse(localStorage.getItem("companyCart")))
     }
 }, [])
 
-  // update local storage when ActiveCustomerCart update 
-  useEffect(() => {
-   localStorage.setItem("activeCustomercart", JSON.stringify(activeCustomerCart))
-}, [activeCustomerCart])
-
-  // handling create button 
   const createButton = async (e) => {
     e.preventDefault()
     if (customer.current.value != "") {
@@ -43,11 +33,11 @@ const Index = () => {
         customer.current.value.slice(1);
       const data = {
         "buyer": customer_name_capitalize,
-        "billNo": billNumber,
+        "billNo": cBNumber,
         "cartData": [],
         "billDate": new Date().toDateString(),
       }
-      const response = await fetch("/api/recordBill", {
+      const response = await fetch("/api/companyBill", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -56,36 +46,29 @@ const Index = () => {
       });
       const resRecive = await response.json()
       if (resRecive.recorded) {
-        setActiveCustomerCart([
-          ...activeCustomerCart,
-          { buyer: customer_name_capitalize, cartData: [], billNo: billNumber},
+        setCompanyCart([
+          ...companyCart,
+          { buyer: customer_name_capitalize, cartData: [], billNo: cBNumber},
         ]);
         customer.current.value = "";
-        getBillNo()
+        getNo()
       }
     }
   };
 
-  // updating the stock quantity after checkout (function called in checkout)
-  const updateStock=async(cart)=>{
-    const response = await fetch("/api/stockUpdate", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(cart),
-    });
-  }
+  useEffect(() => {
+    localStorage.setItem("companyCart", JSON.stringify(companyCart))
+}, [companyCart])
 
-    // handling checkout button 
+
   const checkout = async (index) => {
     const data = {
-      "buyer": activeCustomerCart[index].buyer,
-      "billNo": activeCustomerCart[index].billNo,
-      "cartData": activeCustomerCart[index].cartData,
+      "buyer": companyCart[index].buyer,
+      "billNo": companyCart[index].billNo,
+      "cartData": companyCart[index].cartData,
       "billDate": new Date().toDateString()
     }
-    const response = await fetch("/api/recordBill", {
+    const response = await fetch("/api/companyBill", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -94,22 +77,20 @@ const Index = () => {
     });
     const resRecive = await response.json()
     if (resRecive.recorded) {
-      updateStock(activeCustomerCart[index].cartData)
-      activeCustomerCart.splice(index, 1);
-      localStorage.setItem("activeCustomerCart", JSON.stringify(activeCustomerCart));
-      setActiveCustomerCart([...activeCustomerCart]);
+      companyCart.splice(index, 1);
+      localStorage.setItem("companyCart", JSON.stringify(companyCart));
+      setCompanyCart([...companyCart]);
     }
   };
 
-     // handling discard button 
   const discard = async (index) => {
     const data = {
       "buyer": "BILL DICARDED",
-      "billNo": activeCustomerCart[index].billNo,
+      "billNo": companyCart[index].billNo,
       "cartData": [],
       "billDate": new Date().toDateString()
     }
-    const response = await fetch("/api/recordBill", {
+    const response = await fetch("/api/companyBill", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -118,18 +99,21 @@ const Index = () => {
     });
     const resRecive = await response.json()
     if (resRecive.recorded) {
-      activeCustomerCart.splice(index, 1);
-      localStorage.setItem("activeCustomerCart", JSON.stringify(activeCustomerCart));
-      setActiveCustomerCart([...activeCustomerCart]);
+      companyCart.splice(index, 1);
+      localStorage.setItem("companyCart", JSON.stringify(companyCart));
+      setCompanyCart([...companyCart]);
     }
   };
 
   return (
     <>
       <div className="container my-4">
+        <h5 className="text-center">GOPI RAM MAHAVIR PRASAD</h5>
+          <h6 className="text-center">1532 GALI ARYA SAMAJ DELHI-110006 </h6>
+          <h6 className="text-center mb-2">Mob No. 8459520402</h6>
         <form className="mb-3 row">
           <label htmlFor="name" className="col-sm-auto col-form-label fw-bold">
-            Customer Name
+            Company Name
           </label>
           <div className="col-sm-4">
             <input
@@ -148,16 +132,17 @@ const Index = () => {
             >
               Create
             </button>
+           
           </div>
         </form>
       </div>
-      {activeCustomerCart &&
-        activeCustomerCart.map((singleActiveCustomer, atIndex) => {
+      {companyCart &&
+        companyCart.map((e, cIndex) => {
           return (
             <div
               className="accordion container my-2"
               id="accordionExample"
-              key={`accordian${atIndex}`}
+              key={`accordian${cIndex}`}
             >
               <div className="accordion-item">
                 <h2 className="accordion-header" id="headingThree">
@@ -165,15 +150,15 @@ const Index = () => {
                     className="accordion-button collapsed"
                     type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target={`#accordian${atIndex}`}
+                    data-bs-target={`#accordian${cIndex}`}
                     aria-expanded="false"
                     aria-controls="collapseThree"
                   >
-                    #{atIndex+1} {singleActiveCustomer.buyer}
+                    #{cIndex+1} {e.buyer}
                   </button>
                 </h2>
                 <div
-                  id={`accordian${atIndex}`}
+                  id={`accordian${cIndex}`}
                   className="accordion-collapse collapse"
                   aria-labelledby="headingThree"
                   data-bs-parent="#accordionExample"
@@ -183,27 +168,27 @@ const Index = () => {
                     style={{ height: "25rem" }}
                   >
                     <div className=" w-75 m-auto">
-                      <PrintComp
+                      <ComBillPrintCom
                         customerAtIndex={{
-                          index: atIndex,
-                          cart:activeCustomerCart,
-                          setCart:setActiveCustomerCart,
+                          index: cIndex,
+                          cart:companyCart,
+                          setCart:setCompanyCart,
                           editing:true
-
                         }}
                       />
                     </div>
-                    <ItemForm index={atIndex} cart={activeCustomerCart} setCart={setActiveCustomerCart} />
+                    <ItemForm index={cIndex} cart={companyCart}
+                          setCart={setCompanyCart}/>
                     <div className="container d-flex justify-content-end my-2">
                       <button
                         className="btn btn-info text-black fw-bold border border-dark mx-2"
-                        onClick={() => discard(atIndex)}
+                        onClick={() => discard(cIndex)}
                       >
                         Discard
                       </button>
                       <button
                         className="btn btn-info text-black fw-bold border border-dark mx-2"
-                        onClick={() => checkout(atIndex)}
+                        onClick={() => checkout(cIndex)}
                       >
                         Checkout
                       </button>
@@ -214,8 +199,12 @@ const Index = () => {
             </div>
           );
         })}
+        
     </>
   );
 };
 
-export default Index;
+export default bill;
+
+
+

@@ -1,51 +1,5 @@
 import React, { useRef, useState } from "react";
-import PreBillComponent from "../components/PreBillDetails/PreBillComponent";
-import Link from "next/link";
-import ReactToPrint from "react-to-print";
-
-const ComponentToPrint = React.forwardRef((props, ref) => {
-  const { preBills, index, setbills } = props.customerAtIndex;
-  // console.log(index,preBills)
-  return (
-    <div className="print-source" ref={ref}>
-      <PreBillComponent
-        preBills={preBills}
-        index={index}
-        setbills={setbills}
-        editing={false}
-      />
-    </div>
-  );
-});
-
-const ComponentToPrintWrapper = ({ customerAtIndex }) => {
-  const componentRef = useRef();
-  // console.log("componenetTo print wrapper",customerAtIndex.index)
-  return (
-    <div>
-      <ComponentToPrint ref={componentRef} customerAtIndex={customerAtIndex} />
-      <div className="d-flex justify-content-end">
-        <Link
-          href={`/UpdateBill/${
-            customerAtIndex.preBills[customerAtIndex.index]._id
-          }`}
-        >
-          <button className="btn px-3 m-2 btn-info text-black fw-bold border border-dark">
-            Edit
-          </button>
-        </Link>
-        <ReactToPrint
-          trigger={() => (
-            <button className="btn px-3 m-2 btn-info text-black fw-bold border border-dark">
-              Print
-            </button>
-          )}
-          content={() => componentRef.current}
-        />
-      </div>
-    </div>
-  );
-};
+import PrintComp from "../components/printComponent";
 
 const details = () => {
   const [recordedBill, setRecordedBill] = useState([]);
@@ -64,18 +18,15 @@ const details = () => {
       } else if (InputParameter.current.value == "billDate") {
         userParameter = new Date(UserInput.current.value).toDateString();
       }
-      // console.log("details.js", dateSearch);
-
-      const data = await fetch("http://localhost:3000/api/recordBill", {
+      const data = await fetch("/api/recordBill", {
         method: "GET",
         headers: {
           query: `{"${parameter}":"${userParameter}"}`,
           Accept: "application/json",
           "Content-Type": "application/json",
-        }
+        },
       });
       const d = await data.json();
-      // console.log("details.js", d);
       setRecordedBill(d);
       UserInput.current.value = "";
     }
@@ -88,10 +39,9 @@ const details = () => {
       setInputFieldType("number");
     } else if (e.target.value == "buyer") {
       setInputFieldType("text");
-    }else if (e.target.value == "lastRecord") {
+    } else if (e.target.value == "lastRecord") {
       setInputFieldType("number");
-    } 
-    // console.log(e.target.value)
+    }
   };
 
   return (
@@ -150,7 +100,7 @@ const details = () => {
                     aria-expanded="false"
                     aria-controls="collapseThree"
                   >
-                    #{cIndex+1} {e.buyer}
+                    #{cIndex + 1} {e.buyer}
                   </button>
                 </h2>
                 <div
@@ -163,12 +113,13 @@ const details = () => {
                     className="accordion-body overflow-auto"
                     style={{ height: "25rem" }}
                   >
-                    <div className=" w-50 m-auto">
-                      <ComponentToPrintWrapper
+                    <div className=" w-75 m-auto">
+                      <PrintComp
                         customerAtIndex={{
                           index: cIndex,
-                          preBills: recordedBill,
-                          setbills: setRecordedBill,
+                          cart: recordedBill,
+                          setCart: setRecordedBill,
+                          editing:false
                         }}
                       />
                     </div>

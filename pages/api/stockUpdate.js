@@ -14,7 +14,7 @@ const handler = async (req, res) => {
                     }
                     const d= await ProductSch.findOneAndUpdate(filter, update)
                 } catch (error) {
-                    res.status(500).send({message:"Product NOT Updated successfully", stat:false})
+                    res.status(204).send({message:"Product NOT Updated successfully", stat:false})
                 }
             }
             res.status(200).send({message:"Product Updated successfully", stat:true})

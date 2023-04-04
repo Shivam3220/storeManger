@@ -26,10 +26,8 @@ const handler = async (req, res) => {
   }
 
   else if (req.method === 'POST') {
-    // console.log(req.body)
         try {
           const record = new Records(req.body);
-          // console.log(record)
           const recordBill = await record.save();
 
           return res.status(200).send({message:"Bill Added Sucessfully", recorded:true});
@@ -40,11 +38,9 @@ const handler = async (req, res) => {
   } 
 
  else if (req.method === 'PUT') {
-    // console.log(req.body)
         try {
           const billUpdate = await Records.findOneAndUpdate({billNo:req.body.billNo},req.body);
-        //   console.log(billUpdate)
-          return res.status(200).send({message:"Bill Added Sucessfully", recorded:true,bill:billUpdate});
+          return res.status(200).send({message:"Bill Added Sucessfully", recorded:true});
         } 
         catch (error) {
           return res.status(500).send({message:"Internal Server Error", recorded:false});

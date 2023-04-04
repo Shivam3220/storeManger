@@ -1,18 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useRef, useContext } from "react";
-import MyContext from "../../pages/context/MyContext";
+import React, {useRef, useState } from "react";
 
 const ItemForm = (props) => {
-  const { setCart, cart } = useContext(MyContext);
+  // getting props data 
+  const { setCart, cart, index } = props
+
+  // all refs 
   const productName = useRef();
   const price = useRef();
   const quantity = useRef();
   const dropdown = useRef();
 
+  // states
   const [searchProduct, setSearchProduct] = useState([]);
   const [navigate, setNavigate] = useState(0);
-
+  
+  // handling onchange on input product field and showing the product similar to the enter name from database 
   const onChangeProductInput = async () => {
+    quantity.current.value=""
     const product = productName.current.value;
     const response = await fetch("/api/product", {
       method: "GET",
@@ -23,17 +27,12 @@ const ItemForm = (props) => {
     });
     const res = await response.json();
     if(res.stat){
-      setNavigate(0)
       setSearchProduct(res.products);
     }
   };
 
-  const call=()=>{
-    console.log("hi")
-    return 4
-  }
-
-  const handleAddProduct = (index) => {
+ 
+  const handleAddProduct = () => {
     if (productName.current.value != "" && price.current.value != "") {
       if (quantity.current.value != "") {
         cart[index].cartData = [
@@ -49,28 +48,9 @@ const ItemForm = (props) => {
         price.current.value = "";
         setSearchProduct([])
       } 
-      // else {
-      //   cart[index].cartData = [
-      //     ...cart[index].cartData,
-      //     {
-      //       productName: productName.current.value,
-      //       price: parseFloat(price.current.value),
-      //       quantity: 1,
-      //     },
-      //   ];
-      //   productName.current.value = "";
-      //   quantity.current.value = "";
-      //   price.current.value = "";
-      // }
     }
-
     setCart([...cart]);
   };
-
-  // storing data to local storage when cart update
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [handleAddProduct]);
 
   const downkey = (e) => {
     if(searchProduct.length!=0){
@@ -80,7 +60,14 @@ const ItemForm = (props) => {
     }
     else if(e.code=="ArrowUp"){
       productName.current.focus()
+      setNavigate(0)
     }
+  }
+  else if(e.code=="ArrowDown"){
+    price.current.focus()
+  }
+  else if(e.code=="ArrowUp"){
+    quantity.current.focus()
   }
   };
 
@@ -88,14 +75,17 @@ const ItemForm = (props) => {
     productName.current.value = e.product;
     price.current.value = e.price;
     quantity.current.focus();
+    setNavigate(0)
     setSearchProduct([]);
   };
 
   const toggleOn = () => {
     const checkDropState = productName.current.className;
-    if (checkDropState.search("show") < 0) {
-      productName.current.click();
-      productName.current.scrollIntoView();
+    if(productName.current.value!=""){
+      if (checkDropState.search("show") < 0) {
+        productName.current.click();
+        productName.current.scrollIntoView();
+      }
     }
   };
 
@@ -151,6 +141,14 @@ const ItemForm = (props) => {
               placeholder="Price"
               ref={price}
               required
+              onKeyDown={(element)=>{ 
+                if (element.code == "ArrowDown") {
+                  element.preventDefault()
+                  quantity.current.focus()}                  
+                  else if(element.code == "ArrowUp"){
+                    element.preventDefault()
+                    productName.current.focus()
+                  }}}
             />
           </div>
           <div className="flex-fill mx-2">
@@ -160,6 +158,16 @@ const ItemForm = (props) => {
               placeholder="Quantity"
               ref={quantity}
               required
+              onKeyDown={(element)=>{ 
+                if (element.code == "ArrowUp") {
+                  element.preventDefault()
+                  price.current.focus()
+                }                  
+                else if(element.code == "ArrowDown"){
+                  element.preventDefault()
+                  productName.current.focus()
+                }
+              }}
             />
           </div>
 
@@ -167,7 +175,7 @@ const ItemForm = (props) => {
             <button
               type="submit"
               className="btn btn-info text-black fw-bold border border-dark w-100"
-              onClick={() => handleAddProduct(props.cIndex)}
+              onClick={() => handleAddProduct()}
             >
               Add Product
             </button>

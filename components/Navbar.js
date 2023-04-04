@@ -28,11 +28,6 @@ const navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/bill" className="nav-link  text-black fw-semibold">
-                  Bill
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link
                   href="/details"
                   className="nav-link  text-black fw-semibold"
@@ -43,10 +38,36 @@ const navbar = () => {
               <li className="nav-item dropdown">
                 <Link
                   className="nav-link dropdown-toggle text-black fw-semibold"
-                  href=""
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
+                  href=""
+                >
+                  Bill
+                </Link>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link href="/companyBill/bill" className="dropdown-item">
+                      Company Bill
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/companyBill/billSearch"
+                      className="dropdown-item"
+                    >
+                      Search Bill
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+              <li className="nav-item dropdown">
+                <Link
+                  className="nav-link dropdown-toggle text-black fw-semibold"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  href=""
                 >
                   Stock Manage
                 </Link>
@@ -59,11 +80,6 @@ const navbar = () => {
                   <li>
                     <Link className="dropdown-item" href="/stock/update">
                       Update Stock
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" href="/stock/delete">
-                      Delete Stock
                     </Link>
                   </li>
                 </ul>

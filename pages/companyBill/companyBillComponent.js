@@ -1,12 +1,13 @@
 import React from "react";
-import ItemTable from "./ItemTable";
+import ItemTable from "../../components/BillGeneratingTab/ItemTable";
+
 
 const BillComponent = (props) => {
-  const {cart, setCart, index, editing}=props
+  const {cart, setCart,index, editing} = props
   const date = new Date().toDateString();
 
   const onNameChange=(e)=>{
-    cart[index].buyer=e.target.value
+    cart[props.index].buyer=e.target.value
     setCart([...cart])
   }
 
@@ -17,17 +18,19 @@ const BillComponent = (props) => {
       return date
     }
   }
-  
+
 
   return (
     <>
         <div className="border border-dark">
-          <h5 className="text-center">ESTIMATE</h5>
+          <h5 className="text-center">GOPI RAM MAHAVIR PRASAD</h5>
+          <h6 className="text-center">1532 GALI ARYA SAMAJ DELHI-110006 </h6>
+          <h6 className="text-center">Mob No. 8459520402</h6>
           <div className="d-flex  justify-content-between">
             <div className="col ">
             <h6 className="px-2">
             Bill No.{" "}
-            <span className="text-decoration-underline fw-bold">GT{ cart[index].billNo}</span>
+            <span className="text-decoration-underline fw-bold">GT{cart[index].billNo}</span>
           </h6>
               
             </div>
@@ -36,10 +39,10 @@ const BillComponent = (props) => {
             </div>
           </div>
             <h6 className="px-2">
-                To : <input className="fw-bold border-0 py-1" style={{"width":"90%"}} value={ cart[index].buyer}  onChange={onNameChange} readOnly={!editing}/>
+                To : <input className="fw-bold border-0" value={cart[index].buyer}  onChange={onNameChange} style={{"width":"90%"}}  readOnly={!editing}/>
               </h6>
           
-          <ItemTable cart={cart} index={index} setCart={setCart} editing={editing}/>
+          <ItemTable index={index} cart={cart} setCart={setCart} editing={editing}/>
         </div>
     </>
   );
