@@ -108,9 +108,7 @@ const bill = () => {
   return (
     <>
       <div className="container my-4">
-        <h5 className="text-center">GOPI RAM MAHAVIR PRASAD</h5>
-          <h6 className="text-center">1532 GALI ARYA SAMAJ DELHI-110006 </h6>
-          <h6 className="text-center mb-2">Mob No. 8459520402</h6>
+        
         <form className="mb-3 row">
           <label htmlFor="name" className="col-sm-auto col-form-label fw-bold">
             Company Name

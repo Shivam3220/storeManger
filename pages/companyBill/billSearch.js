@@ -69,9 +69,7 @@ const BillSearch = () => {
     <>
     <div className="container my-4">
         <h3 className="text-center mx-2">Search Bill</h3>
-        <h5 className="text-center">GOPI RAM MAHAVIR PRASAD</h5>
-          <h6 className="text-center">1532 GALI ARYA SAMAJ DELHI-110006 </h6>
-          <h6 className="text-center mb-2">Mob No. 8459520402</h6>
+        
         <form className="mb-3 row">
           <select
             className="w-25 rounded-2 fw-bold"
