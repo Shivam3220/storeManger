@@ -52,7 +52,7 @@ const ItemTable = (props) => {
               totalAmout += (product.price*product.quantity);
               serialNumber++;
               return (
-                <tr key={Productindex}>
+                <tr key={Productindex} className={product.productName.includes("deposite")?"fw-bold":""}>
                   <th scope="row" className="px-2 col-md-1" onMouseEnter={()=>mouseEnter(Productindex)} onMouseLeave={mouseLeave}>
                     {serialNumber} <span role="button" hidden={delBtn === Productindex? false:true} onClick={()=>delClick(Productindex)}><i className="bi bi-trash "></i></span>
                   </th>
@@ -60,7 +60,7 @@ const ItemTable = (props) => {
                   <td className="col-md-3">
                     <input
                       type="text"
-                      className="w-100 border-0"
+                      className={product.productName.includes("deposite")?"fw-bold w-100 border-0":"w-100 border-0"}
                       value={product.productName}
                       readOnly={!editing}
                       onChange={(element) =>
@@ -71,7 +71,7 @@ const ItemTable = (props) => {
                   <td className="col-md-2">
                     <input
                       type="number"
-                      className="w-100 border-0"
+                      className={product.productName.includes("deposite")?"fw-bold w-100 border-0":"w-100 border-0"}
                       value={product.price}
                       readOnly={!editing}
                       onChange={(element) =>
@@ -82,7 +82,7 @@ const ItemTable = (props) => {
                   <td className="col-md-1">
                     <input
                       type="number"
-                      className="w-100 border-0"
+                      className={product.productName.includes("deposite")?"fw-bold w-100 border-0":"w-100 border-0"}
                       value={product.quantity}
                       readOnly={!editing}
                       onChange={(element) =>
@@ -93,7 +93,7 @@ const ItemTable = (props) => {
                   <td className="col-md-2">
                     <input
                       type="number"
-                      className="w-50 text-end border-0"
+                      className={product.productName.includes("deposite")?"fw-bold w-50 text-end border-0":"w-50 text-end border-0"}
                       style={{ marginLeft: "1rem" }}
                       readOnly
                       value={product.price*product.quantity}
